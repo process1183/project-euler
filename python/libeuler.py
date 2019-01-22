@@ -17,6 +17,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 #pylint: disable=invalid-name
+import functools
+import math
 
 
 _fibmem = [0, 1]
@@ -29,3 +31,30 @@ def nth_fibonacci(n: int) -> int:
     while n > len(_fibmem)-1:
         _fibmem.append(_fibmem[-2] + _fibmem[-1])
     return _fibmem[n]
+
+
+@functools.lru_cache(maxsize=None, typed=False)
+def is_prime(n: int) -> bool:
+    """
+    Test if `n` is a prime number.
+
+    https://en.wikipedia.org/wiki/Prime_number
+    """
+    if n in (0, 1):
+        return False
+    if n in (2, 3):
+        return True
+
+    if n % 2 == 0:
+        return False
+
+    y = 3
+    upper_limit = int(math.sqrt(n)) + 1
+
+    while y < upper_limit:
+        if n % y == 0:
+            return False
+        else:
+            y += 2 # skip even numbers
+
+    return True

@@ -17,7 +17,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-
 import json
 import os
 import unittest
@@ -39,6 +38,17 @@ class TestLibeuler(unittest.TestCase):
     def test_fibonacci(self):
         for i, v in enumerate(self._answers["fibonacci"]):
             self.assertEqual(libeuler.nth_fibonacci(i), v)
+
+    def test_primes(self):
+        prime_list = self._answers["primes"]
+        computed = []
+        for i in range(0, prime_list[-1]+1):
+            if libeuler.is_prime(i):
+                computed.append(i)
+        self.assertListEqual(computed, prime_list)
+
+        for n in self._answers["primes_random"]:
+            self.assertEqual(libeuler.is_prime(n), True)
 
 
 if __name__ == "__main__":
