@@ -58,3 +58,25 @@ def is_prime(n: int) -> bool:
             y += 2 # skip even numbers
 
     return True
+
+
+def prime_factor(n: int) -> list:
+    """
+    Calculate the prime factors for a number.
+
+    https://en.wikipedia.org/wiki/Prime_factor
+    """
+    prime_factors = []
+    y = 2
+
+    while y <= n:
+        if is_prime(y):
+            # if y is prime and y goes into n evenly, y is a prime factor
+            if n % y == 0:
+                prime_factors.append(y)
+                # set n to the counterpart multiplier of y; used to continue prime factorization
+                n = n / y
+                y = 1
+        y += 1
+
+    return sorted(prime_factors)

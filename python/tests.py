@@ -50,6 +50,14 @@ class TestLibeuler(unittest.TestCase):
         for n in self._answers["primes_random"]:
             self.assertEqual(libeuler.is_prime(n), True)
 
+    def test_prime_factors(self):
+        for n in self._answers["primes"]:
+            self.assertListEqual(libeuler.prime_factor(n), [n])
+
+        for k, v in self._answers["prime_factors"].items():
+            k = int(k) # JSON keys are strings
+            self.assertListEqual(libeuler.prime_factor(k), v)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
