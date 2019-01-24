@@ -58,6 +58,10 @@ class TestLibeuler(unittest.TestCase):
             k = int(k) # JSON keys are strings
             self.assertListEqual(libeuler.prime_factor(k), v)
 
+    def test_reversed_ints(self):
+        for n, rn in self._answers["reversed_ints"]:
+            self.assertEqual(libeuler.reverse_int(n), rn)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

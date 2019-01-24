@@ -80,3 +80,10 @@ def prime_factor(n: int) -> list:
         y += 1
 
     return sorted(prime_factors)
+
+
+def reverse_int(n: int) -> int:
+    """
+    Reverse digits in an integer.
+    """
+    return int(str(n)[::-1])
