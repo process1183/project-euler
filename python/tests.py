@@ -62,6 +62,13 @@ class TestLibeuler(unittest.TestCase):
         for n, rn in self._answers["reversed_ints"]:
             self.assertEqual(libeuler.reverse_int(n), rn)
 
+    def test_palindromes(self):
+        l = []
+        for i in range(0, self._answers["palindromes"][-1]+1):
+            if libeuler.is_palindrome(i):
+                l.append(i)
+        self.assertListEqual(l, self._answers["palindromes"])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

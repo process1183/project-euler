@@ -87,3 +87,12 @@ def reverse_int(n: int) -> int:
     Reverse digits in an integer.
     """
     return int(str(n)[::-1])
+
+
+def is_palindrome(n: int) -> bool:
+    """
+    Test if a number is palindromic.
+
+    https://en.wikipedia.org/wiki/Palindromic_number
+    """
+    return n == reverse_int(n)
