@@ -96,3 +96,25 @@ def is_palindrome(n: int) -> bool:
     https://en.wikipedia.org/wiki/Palindromic_number
     """
     return n == reverse_int(n)
+
+
+def factor(n: int) -> list:
+    """
+    Calculate the factors for a number.
+
+    https://en.wikipedia.org/wiki/Factorization
+    """
+    if n == 0:
+        return []
+
+    factors = [1, n]
+    y = 2
+    upper_limit = int(math.sqrt(n))
+
+    while y <= upper_limit:
+        if n % y == 0:
+            factors.append(y)
+            factors.append(n//y)
+        y += 1
+
+    return sorted(list(set(factors)))

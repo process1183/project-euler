@@ -69,6 +69,14 @@ class TestLibeuler(unittest.TestCase):
                 l.append(i)
         self.assertListEqual(l, self._answers["palindromes"])
 
+    def test_factors(self):
+        for n in self._answers["primes"]:
+            self.assertListEqual(libeuler.factor(n), [1, n])
+
+        for k, v in self._answers["factors"].items():
+            k = int(k) # JSON keys are strings
+            self.assertListEqual(libeuler.factor(k), v)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
