@@ -77,6 +77,18 @@ class TestLibeuler(unittest.TestCase):
             k = int(k) # JSON keys are strings
             self.assertListEqual(libeuler.factor(k), v)
 
+    def test_lcm(self):
+        for i in range(0, 100):
+            self.assertEqual(libeuler.lcm(0, i), 0)
+            self.assertEqual(libeuler.lcm(i, 0), 0)
+            self.assertEqual(libeuler.lcm(1, i), i)
+            self.assertEqual(libeuler.lcm(i, 1), i)
+            self.assertEqual(libeuler.lcm(i, i), i)
+
+        for i in self._answers['lcms']:
+            self.assertEqual(libeuler.lcm(i['a'], i['b']), i['r'])
+            self.assertEqual(libeuler.lcm(i['b'], i['a']), i['r'])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -118,3 +118,15 @@ def factor(n: int) -> list:
         y += 1
 
     return sorted(list(set(factors)))
+
+
+def lcm(a: int, b: int) -> int:
+    """
+    Compute the Least common multiple for `a` and `b`.
+
+    https://en.wikipedia.org/wiki/Least_common_multiple
+    """
+    if a == 0 and b == 0:
+        return 0
+
+    return (a // math.gcd(a, b)) * b
