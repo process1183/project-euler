@@ -89,6 +89,24 @@ class TestLibeuler(unittest.TestCase):
             self.assertEqual(libeuler.lcm(i['a'], i['b']), i['r'])
             self.assertEqual(libeuler.lcm(i['b'], i['a']), i['r'])
 
+    def test_sliding_window(self):
+        l = list(range(10))
+        lt1 = [[i, ] for i in l]
+        lt2 = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9]]
+        lt3 = [[0, 1, 2], [1, 2, 3], [2, 3, 4], [3, 4, 5], [4, 5, 6], [5, 6, 7], [6, 7, 8], [7, 8, 9]]
+
+        for i in libeuler.sliding_window(l, len(l)):
+            self.assertListEqual(l, i)
+
+        for i in zip(lt1, libeuler.sliding_window(l, 1)):
+            self.assertListEqual(i[0], i[1])
+
+        for i in zip(lt2, libeuler.sliding_window(l, 2)):
+            self.assertListEqual(i[0], i[1])
+
+        for i in zip(lt3, libeuler.sliding_window(l, 3)):
+            self.assertListEqual(i[0], i[1])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

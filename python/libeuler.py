@@ -130,3 +130,20 @@ def lcm(a: int, b: int) -> int:
         return 0
 
     return (a // math.gcd(a, b)) * b
+
+
+def sliding_window(lst: list, wsize: int) -> iter:
+    """
+    Iterate over overlapping subslices of length `wsize`.
+    """
+    if wsize >= len(lst):
+        yield lst
+        return
+
+    ws = 0
+    we = wsize
+
+    while we <= len(lst):
+        yield lst[ws:we]
+        ws += 1
+        we += 1
