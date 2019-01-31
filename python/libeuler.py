@@ -147,3 +147,18 @@ def sliding_window(lst: list, wsize: int) -> iter:
         yield lst[ws:we]
         ws += 1
         we += 1
+
+
+def sieve_of_eratosthenes(limit: int) -> iter:
+    """
+    Generate prime numbers up to `limit`.
+    """
+    l = [True for i in range(limit)]
+    l[0] = False
+    l[1] = False
+
+    for i, prime in enumerate(l):
+        if prime:
+            for n in range(i**2, limit, i):
+                l[n] = False
+            yield i
