@@ -5,3 +5,7 @@ authors = ["Josh Gadeken"]
 edition = "2018"
 
 [dependencies]
+
+[lib]
+name = "libeuler"
+path = "src/libeuler.rs"
