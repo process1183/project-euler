@@ -7,6 +7,14 @@ use std::path::PathBuf;
 // Test data JSON file path, relative to Cargo manifest dir
 const TEST_DATA: &str = "tests/libeuler_test_data.json";
 
+#[test]
+fn fibonacci_sequence() {
+    let answers = load_data(TEST_DATA).unwrap();
+    for (i, v) in answers.fibonacci.iter().enumerate() {
+        assert_eq!(nth_fibonacci(i as u32), *v);
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 struct LibeulerAnswers {
     factors: HashMap<u64, Vec<u64>>,
