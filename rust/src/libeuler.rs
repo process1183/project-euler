@@ -60,3 +60,25 @@ pub fn is_prime(n: u64) -> bool {
 
     true
 }
+
+/// Calculate the prime factors for a number.
+/// https://en.wikipedia.org/wiki/Prime_factor
+pub fn prime_factor(n: u64) -> Vec<u64> {
+    let mut x = n;
+    let mut y = 2;
+    let mut pfs = Vec::new();
+
+    while y <= x {
+        if is_prime(y) && x % y == 0 {
+            pfs.push(y);
+            x /= y;
+            y = 2;
+            continue;
+        }
+        y += 1;
+    }
+
+    pfs.sort();
+
+    pfs
+}

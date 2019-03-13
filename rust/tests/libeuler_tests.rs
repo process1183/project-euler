@@ -32,6 +32,18 @@ fn primes() {
     }
 }
 
+#[test]
+fn prime_factors() {
+    let answers = load_data(TEST_DATA).unwrap();
+    for i in &answers.primes {
+        assert_eq!(prime_factor(*i), vec![*i]);
+    }
+
+    for (key, value) in &answers.prime_factors {
+        assert_eq!(prime_factor(*key), *value);
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 struct LibeulerAnswers {
     factors: HashMap<u64, Vec<u64>>,
