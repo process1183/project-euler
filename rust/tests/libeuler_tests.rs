@@ -15,6 +15,23 @@ fn fibonacci_sequence() {
     }
 }
 
+#[test]
+fn primes() {
+    let answers = load_data(TEST_DATA).unwrap();
+    let upper_limit = *answers.primes.last().unwrap();
+    let mut computed = Vec::new();
+    for i in 0..=upper_limit {
+        if is_prime(i as u64) {
+            computed.push(i as u64);
+        }
+    }
+    assert_eq!(computed, answers.primes);
+
+    for i in &answers.primes_random {
+        assert_eq!(is_prime(*i), true);
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 struct LibeulerAnswers {
     factors: HashMap<u64, Vec<u64>>,

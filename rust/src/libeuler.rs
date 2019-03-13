@@ -33,3 +33,30 @@ pub fn nth_fibonacci(n: u32) -> u64 {
 
     sum
 }
+
+/// Test if `n` is a prime number.
+/// https://en.wikipedia.org/wiki/Prime_number
+pub fn is_prime(n: u64) -> bool {
+    match n {
+        0 | 1 => return false,
+        2 | 3 => return true,
+        _ => (),
+    }
+
+    if n % 2 == 0 {
+        return false;
+    }
+
+    let mut y = 3;
+    let upper_limit = ((n as f64).sqrt() + 1.0) as u64;
+
+    while y < upper_limit {
+        if n % y == 0 {
+            return false;
+        } else {
+            y += 2;
+        }
+    }
+
+    true
+}
