@@ -52,6 +52,19 @@ fn reverse_ints() {
     }
 }
 
+#[test]
+fn palindromes() {
+    let answers = load_data(TEST_DATA).unwrap();
+    let upper_limit = *answers.palindromes.last().unwrap();
+    let mut computed = Vec::new();
+    for i in 0..=upper_limit {
+        if is_palindrome(i as u64) {
+            computed.push(i as u64);
+        }
+    }
+    assert_eq!(computed, answers.palindromes);
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 struct LibeulerAnswers {
     factors: HashMap<u64, Vec<u64>>,

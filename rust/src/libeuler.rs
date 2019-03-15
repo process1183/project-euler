@@ -95,3 +95,9 @@ pub fn reverse_int(n: u64) -> u64 {
 
     r
 }
+
+/// Test if a number is palindromic.
+/// https://en.wikipedia.org/wiki/Palindromic_number
+pub fn is_palindrome(n: u64) -> bool {
+    n == reverse_int(n)
+}
