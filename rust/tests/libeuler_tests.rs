@@ -44,6 +44,14 @@ fn prime_factors() {
     }
 }
 
+#[test]
+fn reverse_ints() {
+    let answers = load_data(TEST_DATA).unwrap();
+    for (num, mun) in answers.reversed_ints.iter() {
+        assert_eq!(reverse_int(*num), *mun);
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 struct LibeulerAnswers {
     factors: HashMap<u64, Vec<u64>>,

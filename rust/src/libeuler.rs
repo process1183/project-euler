@@ -82,3 +82,16 @@ pub fn prime_factor(n: u64) -> Vec<u64> {
 
     pfs
 }
+
+/// Reverse digits in an integer
+pub fn reverse_int(n: u64) -> u64 {
+    let mut n = n;
+    let mut r = 0;
+
+    while n > 0 {
+        r = (r * 10) + (n % 10);
+        n /= 10;
+    }
+
+    r
+}
