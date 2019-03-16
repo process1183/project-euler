@@ -77,10 +77,28 @@ fn factors() {
     }
 }
 
+#[test]
+fn gcds() {
+    for i in 0..100 {
+        assert_eq!(gcd(0, i), i);
+        assert_eq!(gcd(i, 0), i);
+        assert_eq!(gcd(1, i), 1);
+        assert_eq!(gcd(i, 1), 1);
+        assert_eq!(gcd(i, i), i);
+    }
+
+    let answers = load_data(TEST_DATA).unwrap();
+    for i in &answers.gcds {
+        assert_eq!(gcd(i[&'a'], i[&'b']), i[&'r']);
+        assert_eq!(gcd(i[&'b'], i[&'a']), i[&'r']);
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 struct LibeulerAnswers {
     factors: HashMap<u64, Vec<u64>>,
     fibonacci: Vec<u64>,
+    gcds: Vec<HashMap<char, u64>>,
     lcms: Vec<HashMap<char, u64>>,
     palindromes: Vec<u64>,
     prime_factors: HashMap<u64, Vec<u64>>,

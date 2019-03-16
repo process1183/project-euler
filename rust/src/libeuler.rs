@@ -125,3 +125,19 @@ pub fn factor(n: u64) -> Vec<u64> {
 
     factors
 }
+
+/// Compute the Greatest common divisor for `a` and `b`.
+/// https://en.wikipedia.org/wiki/Greatest_common_divisor
+pub fn gcd(a: u64, b: u64) -> u64 {
+    let mut a = a;
+    let mut b = b;
+    let mut c;
+
+    while b != 0 {
+        c = a % b;
+        a = b;
+        b = c;
+    }
+
+    a
+}
