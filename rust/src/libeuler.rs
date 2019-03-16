@@ -141,3 +141,13 @@ pub fn gcd(a: u64, b: u64) -> u64 {
 
     a
 }
+
+/// Compute the Least common multiple for `a` and `b`.
+/// https://en.wikipedia.org/wiki/Least_common_multiple
+pub fn lcm(a: u64, b: u64) -> u64 {
+    if a == 0 || b == 0 {
+        return 0;
+    }
+
+    (a / gcd(a, b)) * b
+}

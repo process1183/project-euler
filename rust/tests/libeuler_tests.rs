@@ -94,6 +94,23 @@ fn gcds() {
     }
 }
 
+#[test]
+fn lcms() {
+    for i in 0..100 {
+        assert_eq!(lcm(0, i), 0);
+        assert_eq!(lcm(i, 0), 0);
+        assert_eq!(lcm(1, i), i);
+        assert_eq!(lcm(i, 1), i);
+        assert_eq!(lcm(i, i), i);
+    }
+
+    let answers = load_data(TEST_DATA).unwrap();
+    for i in &answers.lcms {
+        assert_eq!(lcm(i[&'a'], i[&'b']), i[&'r']);
+        assert_eq!(lcm(i[&'b'], i[&'a']), i[&'r']);
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 struct LibeulerAnswers {
     factors: HashMap<u64, Vec<u64>>,
