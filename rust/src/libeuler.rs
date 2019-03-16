@@ -101,3 +101,27 @@ pub fn reverse_int(n: u64) -> u64 {
 pub fn is_palindrome(n: u64) -> bool {
     n == reverse_int(n)
 }
+
+/// Calculate the factors for a number.
+/// https://en.wikipedia.org/wiki/Factorization
+pub fn factor(n: u64) -> Vec<u64> {
+    if n == 0 {
+        return vec![];
+    }
+    let mut factors = vec![1, n];
+    let mut y = 2;
+    let upper_limit = (n as f64).sqrt() as u64;
+
+    while y <= upper_limit {
+        if n % y == 0 {
+            factors.push(y);
+            factors.push(n / y);
+        }
+        y += 1;
+    }
+
+    factors.sort();
+    factors.dedup();
+
+    factors
+}

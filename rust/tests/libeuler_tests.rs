@@ -65,6 +65,18 @@ fn palindromes() {
     assert_eq!(computed, answers.palindromes);
 }
 
+#[test]
+fn factors() {
+    let answers = load_data(TEST_DATA).unwrap();
+    for i in &answers.primes {
+        assert_eq!(factor(*i), vec![1, *i]);
+    }
+
+    for (key, value) in &answers.factors {
+        assert_eq!(factor(*key), *value);
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 struct LibeulerAnswers {
     factors: HashMap<u64, Vec<u64>>,
