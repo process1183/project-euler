@@ -151,3 +151,24 @@ pub fn lcm(a: u64, b: u64) -> u64 {
 
     (a / gcd(a, b)) * b
 }
+
+/// Generate prime numbers up to `limit`.
+/// https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+pub fn sieve_of_eratosthenes(limit: usize) -> Vec<usize> {
+    let mut sieve = vec![true; limit];
+    sieve[0] = false;
+    sieve[1] = false;
+
+    let mut primes = Vec::new();
+
+    for i in 0..sieve.len() {
+        if sieve[i] {
+            for n in (i.pow(2)..sieve.len()).step_by(i) {
+                sieve[n] = false;
+            }
+            primes.push(i);
+        }
+    }
+
+    primes
+}

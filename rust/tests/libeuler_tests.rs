@@ -111,6 +111,16 @@ fn lcms() {
     }
 }
 
+#[test]
+fn prime_sieve() {
+    let answers = load_data(TEST_DATA).unwrap();
+    let limit = (*answers.primes.last().unwrap() as usize) + 1;
+    let sieve = sieve_of_eratosthenes(limit);
+    for (i,v) in answers.primes.iter().enumerate() {
+        assert_eq!(sieve[i], *v as usize);
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 struct LibeulerAnswers {
     factors: HashMap<u64, Vec<u64>>,
