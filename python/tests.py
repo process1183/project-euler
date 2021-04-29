@@ -112,6 +112,19 @@ class TestLibeuler(unittest.TestCase):
         for i, n in enumerate(libeuler.sieve_of_eratosthenes(limit)):
             self.assertEqual(n, self._answers["primes"][i])
 
+    def test_ap_term_count(self):
+        aps = self._answers["arithmetic_progressions"]
+        for ap in aps:
+            n = libeuler.ap_term_count(ap["first_term"], ap["last_term"], ap["common_diff"])
+            self.assertEqual(n, ap["term_count"])
+
+    def test_arithmetic_series(self):
+        aps = self._answers["arithmetic_progressions"]
+        for ap in aps:
+            s = libeuler.arithmetic_series(ap["term_count"], ap["first_term"], ap["last_term"])
+            self.assertEqual(s, ap["sum"])
+
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

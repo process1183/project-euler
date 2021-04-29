@@ -162,3 +162,35 @@ def sieve_of_eratosthenes(limit: int) -> iter:
             for n in range(i**2, limit, i):
                 l[n] = False
             yield i
+
+
+def ap_term_count(first_term: int, last_term: int, common_diff: int) -> int:
+    """Calculate the number of terms in a finite arithmetic progression.
+
+    https://en.wikipedia.org/wiki/Arithmetic_progression
+
+    Args:
+        first_term: The first number in the arithmetic progression
+        last_term: The last number in the arithmetic progression
+        common_diff: The difference between consecutive terms
+
+    Returns:
+        The number of terms in the finite arithmetic progression.
+    """
+    return ((last_term - first_term) // common_diff) + 1
+
+
+def arithmetic_series(n_terms: int, first_term: int, last_term: int) -> int:
+    """Calculate the sum of the members of a finite arithmetic progression.
+
+    https://en.wikipedia.org/wiki/Arithmetic_progression
+
+    Args:
+        n_terms: Number of terms in the arithmetic progression
+        first_term: The first number in the arithmetic progression
+        last_term: The last number in the arithmetic progression
+
+    Returns:
+        The sum of the arithmetic progression
+    """
+    return (n_terms * (first_term + last_term)) // 2
