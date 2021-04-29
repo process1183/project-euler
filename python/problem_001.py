@@ -18,19 +18,36 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
+import libeuler
+
+UPPER_LIMIT = 1000
 
 
-def main():
-    limit = 1000
-    n1 = 3
-    n2 = 5
 
-    s = 0
-    for i in range(limit-1, min(n1,n2)-1, -1):
-        if i % n1 == 0 or i % n2 == 0:
-            s += i
+def sum_of_multiples(n: int, limit: int) -> int:
+    """Calculate the sum of the multiples of `n` up to `limit`"""
+    last_term = n * (limit // n)
+    n_terms = libeuler.ap_term_count(n, last_term, n)
+    ap_sum = libeuler.arithmetic_series(n_terms, n, last_term)
+
+    return ap_sum
+
+
+def main() -> None:
+    # Range limit is non-inclusive
+    limit = UPPER_LIMIT - 1
+
+    threes = sum_of_multiples(3, limit)
+    fives = sum_of_multiples(5, limit)
+
+    # Inclusion-exclusion principle: the sum of the multiples of 15
+    # is included in both the sum of the multiples of 3 and the sum
+    # of the multiples of 5- so remove the duplication.
+    fifteens = sum_of_multiples(15, limit)
+    s = threes + fives - fifteens
 
     print(s)
+
 
 
 if __name__ == "__main__":
