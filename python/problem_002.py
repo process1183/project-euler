@@ -18,8 +18,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-
 import libeuler
+
+VALUE_LIMIT = 4000000
+
 
 
 def main():
@@ -27,11 +29,14 @@ def main():
     f = 0
     s = 0
 
-    while f < 4000000:
+    while True:
         f = libeuler.nth_fibonacci(i)
-        if f % 2 == 0:
-            s += f
-        i += 1
+        if f > VALUE_LIMIT:
+            break
+
+        # Every 3rd Fibonacci number is even
+        s += f
+        i += 3
 
     print(s)
 
