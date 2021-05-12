@@ -108,6 +108,10 @@ class TestLibeuler(unittest.TestCase):
             self.assertListEqual(i[0], i[1])
 
     def test_sieve_of_eratosthenes(self):
+        for i in range(0, 3):
+            l = list(libeuler.sieve_of_eratosthenes(i))
+            self.assertListEqual([], l)
+
         limit = self._answers["primes"][-1] + 1
         for i, n in enumerate(libeuler.sieve_of_eratosthenes(limit)):
             self.assertEqual(n, self._answers["primes"][i])

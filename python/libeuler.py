@@ -153,6 +153,9 @@ def sieve_of_eratosthenes(limit: int) -> iter:
     """
     Generate prime numbers up to `limit`.
     """
+    if limit < 2:
+        return
+
     l = [True for i in range(limit)]
     l[0] = False
     l[1] = False
